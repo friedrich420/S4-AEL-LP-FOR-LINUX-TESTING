@@ -68,11 +68,8 @@
 #include <linux/shmem_fs.h>
 #include <linux/slab.h>
 #include <linux/perf_event.h>
-<<<<<<< HEAD
 #include <linux/random.h>
-=======
 #include <linux/s_funcs.h>
->>>>>>> f992d8b... Replace the offending argument earlier in the boot process by FennyFatal
 
 #include <asm/io.h>
 #include <asm/bugs.h>
