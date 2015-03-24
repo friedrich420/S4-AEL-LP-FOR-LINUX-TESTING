@@ -1028,7 +1028,6 @@ restart_loop:
 		journal->j_average_commit_time = commit_time;
 	write_unlock(&journal->j_state_lock);
 
-<<<<<<< HEAD
 	if (commit_transaction->t_checkpoint_list == NULL &&
 	    commit_transaction->t_checkpoint_io_list == NULL) {
 		__jbd2_journal_drop_transaction(journal, commit_transaction);
@@ -1048,21 +1047,6 @@ restart_loop:
 			commit_transaction->t_cpprev->t_cpnext =
 				commit_transaction;
 		}
-=======
-	if (journal->j_checkpoint_transactions == NULL) {
-		journal->j_checkpoint_transactions = commit_transaction;
-		commit_transaction->t_cpnext = commit_transaction;
-		commit_transaction->t_cpprev = commit_transaction;
-	} else {
-		commit_transaction->t_cpnext =
-			journal->j_checkpoint_transactions;
-		commit_transaction->t_cpprev =
-			commit_transaction->t_cpnext->t_cpprev;
-		commit_transaction->t_cpnext->t_cpprev =
-			commit_transaction;
-		commit_transaction->t_cpprev->t_cpnext =
-			commit_transaction;
->>>>>>> 17c6972... Linux 3.4.51
 	}
 	spin_unlock(&journal->j_list_lock);
 
@@ -1070,7 +1054,7 @@ restart_loop:
 		journal->j_commit_callback(journal, commit_transaction);
 		spin_lock(&journal->j_list_lock);
 		if (commit_transaction->t_dropped) {
-//			to_free = 1;
+			to_free = 1;
 		} else {
 			commit_transaction->t_callbacked = 1;
 		}
