@@ -143,6 +143,10 @@ sd_store_cache_type(struct device *dev, struct device_attribute *attr,
 	char *buffer_data;
 	struct scsi_mode_data data;
 	struct scsi_sense_hdr sshdr;
+<<<<<<< HEAD
+=======
+	static const char temp[] = "temporary ";
+>>>>>>> 17c6972... Linux 3.4.51
 	int len;
 
 	if (sdp->type != TYPE_DISK)
